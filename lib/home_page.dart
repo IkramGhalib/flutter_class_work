@@ -48,22 +48,29 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 40.0),
                 TextFormField(
-                  obscureText: _txtpassword,
+                  obscureText:_txtpassword,
                   decoration: InputDecoration(
-                      labelText: "Password",
-                      hintText: "Enter password",
-                      hintStyle:
-                          TextStyle(fontSize: 23.0, color: Colors.yellow),
-                      border: OutlineInputBorder(),
-                      suffix: IconButton(
-                        icon: Icon(_txtpassword?Icons.remove_red_eye:Icons.security),
-                        onPressed: () {
-                          setState(() {
-                            _txtpassword =! _txtpassword;
-                          });
-                        },
-                      )),
-                )
+                      hintText: "Enter Password",labelText: "Password",
+                      labelStyle: TextStyle(fontSize: 20,color: Colors.black),
+                  border: OutlineInputBorder(),
+                    suffix: IconButton(icon: Icon(_txtpassword?Icons.remove_red_eye:Icons.security),onPressed: () {
+                      setState(() {
+                        _txtpassword=!_txtpassword;
+                      });
+                    },)
+
+                  ),
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return "Please Enter Password";
+
+                    }
+                    else if(value.length<6){
+                      return "Password Should be 6";
+                    }
+                    else null;
+                  },
+                ),
               ],
             ),
           ),

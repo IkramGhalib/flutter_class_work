@@ -60,16 +60,7 @@ class _HomeState extends State<Home> {
                     },)
 
                   ),
-                  validator: (value){
-                    if(value!.isEmpty){
-                      return "Please Enter Password";
-
-                    }
-                    else if(value.length<6){
-                      return "Password Should be 6";
-                    }
-                    else null;
-                  },
+                
                 ),
               ],
             ),

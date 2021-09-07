@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_day_1/dashboard.dart';
+import 'package:flutter_day_1/utils/routes.dart';
 
 import 'home_page.dart';
 
@@ -18,7 +20,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
         backgroundColor: Colors.red,
       ),
-      home: Home(),
+      routes: {
+        "/":(context)=>Home(),
+        MyRoutes.DashboardRoutes:(context)=>Dashboard(),
+        
+      },
+
+
+
+
+      // routes: {
+      //    "/":(context)=>Home(),
+      //   MyRoutes.DashboardRoutes:(context)=>Dashboard()
+      // },
+      // home: Home(),
     );
   }
 }

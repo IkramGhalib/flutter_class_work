@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     String name = "";
     bool _txtpassword = false;
+    bool changeButton = false;
     return Material(
       color: Colors.green,
       child: Column(
@@ -70,23 +71,26 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 50.0,
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, MyRoutes.DashboardRoutes);
-                    // Navigator.pushNamed(context,MyRoutes.DashboardRoutes);
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 50,
-                    alignment: Alignment.center,
-                    // color: Colors.red,
-                    child: Text(
-                      "Login",
-                      style: TextStyle(color: Colors.white),
+                Material(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, MyRoutes.DashboardRoutes);
+                      // Navigator.pushNamed(context,MyRoutes.DashboardRoutes);
+                    },
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 2),
+                      width: changeButton?100:150,
+                      height: 50,
+                      alignment: Alignment.center,
+                      // color: Colors.red,
+                      child: Text(
+                        "Login",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(15)),
                     ),
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(15)),
                   ),
                 )
               ],

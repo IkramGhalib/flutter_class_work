@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_day_1/dashboard.dart';
+import 'package:flutter_day_1/splash_screen.dart';
 import 'package:flutter_day_1/utils/routes.dart';
+import 'package:flutter_day_1/widgets/recipt_card.dart';
 
 import 'home_page.dart';
 
@@ -21,8 +23,10 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.red,
       ),
       routes: {
-        "/":(context)=>Home(),
+        "/":(context)=>Menu(),
         MyRoutes.DashboardRoutes:(context)=>Dashboard(),
+         MyRoutes.LoginRoutes:(context)=>Home(),
+
         
       },
 

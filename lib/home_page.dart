@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_day_1/dashboard.dart';
 import 'package:flutter_day_1/utils/routes.dart';
+import 'package:flutter_day_1/widgets/mywidget.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,12 +12,27 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  // TextEditingController  = TextEditingController();
+
+  GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
+
+  void validation() {
+  //   if (email.text.trim().isEmpty || email.text.trim() == null) {
+  //     var showSnackBar = globalKey.currentState!
+  //         .showSnackBar(SnackBar(content: Text("Email Enter")));
+  //     return;
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     String name = "";
-    bool _txtpassword = false;
-    bool changeButton = false;
+    // bool _txtpassword = false;
+    // bool changeButton = false;
     return Material(
+      key: globalKey,
       color: Colors.green,
       child: Column(
         children: [
@@ -40,60 +56,41 @@ class _HomeState extends State<Home> {
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: "Enter your Email",
-                      hintText: "Email",
-                      hintStyle: TextStyle(fontSize: 22, color: Colors.purple),
-                      border: OutlineInputBorder()),
-                ),
-                SizedBox(height: 40.0),
-                TextFormField(
-                  obscureText: _txtpassword,
-                  decoration: InputDecoration(
-                      hintText: "Enter Password",
-                      labelText: "Password",
-                      labelStyle: TextStyle(fontSize: 20, color: Colors.black),
-                      border: OutlineInputBorder(),
-                      suffix: IconButton(
-                        icon: Icon(_txtpassword
-                            ? Icons.remove_circle
-                            : Icons.security),
-                        onPressed: () {
-                          setState(() {
-                            _txtpassword = !_txtpassword;
-                          });
-                        },
-                      )),
-                ),
-                SizedBox(
-                  height: 50.0,
-                ),
-                Material(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, MyRoutes.DashboardRoutes);
-                      // Navigator.pushNamed(context,MyRoutes.DashboardRoutes);
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(seconds: 2),
-                      width: changeButton?100:150,
-                      height: 50,
-                      alignment: Alignment.center,
-                      // color: Colors.red,
-                      child: Text(
-                        "Login",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
+            child: SingleChildScrollView(
+              child: Column(
+                
+                children: [
+                  TextFormWidget(
+                    controller: email,
+                    obscureText: false,
+                    labelText: "Enter email",
+                    hintText: "Email",
                   ),
-                )
-              ],
+                  SizedBox(height: 40.0),
+                  TextFormWidget(
+                    controller: password,
+                    obscureText: true,
+                    labelText: "Enter Password",
+                    hintText: "Password",
+                  ),
+                  SizedBox(
+                    height: 50.0,
+                  ),
+                  // TextFormWidget(
+                  //   obscureText: true,
+                  //   labelText: "Enter firstname",
+                  //   hintText: "Firstname",
+                  // ),
+                  Container(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        validation();
+                      },
+                      child: Text("login"),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],

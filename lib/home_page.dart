@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_day_1/dashboard.dart';
-import 'package:flutter_day_1/utils/routes.dart';
 import 'package:flutter_day_1/widgets/mywidget.dart';
 
 class Home extends StatefulWidget {

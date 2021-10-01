@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_day_1/home_page.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
-import 'package:splash_screen_view/splash_screen_view.dart';
 
 class SplashScreen extends StatelessWidget {
 

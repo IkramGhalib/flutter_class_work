@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_day_1/dashboard.dart';
 import 'package:flutter_day_1/splash_screen.dart';
+import 'package:flutter_day_1/sqlite.dart';
 import 'package:flutter_day_1/utils/routes.dart';
 import 'package:flutter_day_1/widgets/recipt_card.dart';
 
@@ -23,9 +24,9 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.red,
       ),
       routes: {
-        "/":(context)=>Menu(),
-        MyRoutes.DashboardRoutes:(context)=>Dashboard(),
-         MyRoutes.LoginRoutes:(context)=>Home(),
+        "/":(context)=>Sqlite(),
+        MyRoutes.dashboardRoutes:(context)=>Dashboard(),
+         MyRoutes.loginRoutes:(context)=>Home(),
 
         
       },

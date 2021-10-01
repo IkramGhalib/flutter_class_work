@@ -29,7 +29,7 @@ class Dashboard extends StatelessWidget {
               SCBottomBarItem(
                   icon: Icons.access_alarm_sharp,
                   onPressed: () {
-                    Navigator.pushNamed(context, MyRoutes.LoginRoutes);
+                    Navigator.pushNamed(context, MyRoutes.loginRoutes);
                   },
                   title: "Home"),
               SCBottomBarItem(

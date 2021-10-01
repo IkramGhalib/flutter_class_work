@@ -1,41 +1,44 @@
 import 'package:sqflite/sqflite.dart';
 
 import 'model.dart';
+import 'package:path/path.dart';
+
 
 class DBHelper {
   Future<Database> initDB() async {
-    final path = getDatabasesPath();
+    final path = await getDatabasesPath();
     return openDatabase(join(path, 'Mydatabase.db'),
         onCreate: (database, verison) async {
       await database.execute("""
         CREATE TABLE student(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        subtitle TEXT NOT NULL
+        name TEXT NOT NULL,
+        fathername TEXT NOT NULL
         )
         """);
     }, version: 1);
   }
 
-  Future<bool> insertData(DatabaseModel databaseModel) async {
+  Future<bool> insert(DatabaseModel database) async {
     final Database db = await initDB();
-    db.insert("student", databaseModel.toMap());
+    db.insert("student", database.toMap());
     return true;
   }
 
   Future<List<DatabaseModel>> showData() async {
     final Database db = await initDB();
-    final List<Map<String, Object?>> adt = await db.query("student");
-    return adt.map((e) => DatabaseModel.fromMap(e)).toList();
+    final List<Map<String, Object?>> datas = await db.query("student");
+    return datas.map((e) => DatabaseModel.fromMap(e)).toList();
   }
 
-   Future<void> update(DatabaseModel databaseModel, int id) async {
+  Future<void> update(DatabaseModel databaseModel, int id) async {
     final Database db = await initDB();
-    await db.update("student", databaseModel.toMap(), where: "id=?", whereArgs: [id]);
+    await db.update("student", databaseModel.toMap(),
+        where: "id=?", whereArgs: [id]);
   }
-   Future<void> delete(int id) async {
+
+  Future<void> delete(int id) async {
     final Database db = await initDB();
     await db.delete("student", where: "id=?", whereArgs: [id]);
   }
-
 }
